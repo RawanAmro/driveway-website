@@ -535,7 +535,7 @@
     </div>
     <form class="form-wrap" id="estimateForm" onsubmit="return handleSubmit(event)" enctype="multipart/form-data">
       <!-- Web3Forms hidden fields (replace access_key with your own from web3forms.com) -->
-      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE" />
+      <input type="hidden" name="access_key" value="7b57d9b3-06e1-4250-9247-26af548ea1b0" />
       <input type="hidden" name="subject" value="New Online Estimate Request — Driveway Auto Repair Inc" />
       <input type="hidden" name="from_name" value="Driveway Auto Repair Inc Website" />
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
@@ -703,7 +703,7 @@
 
   // Form submit — Web3Forms backend (free, supports file attachments)
   // To activate: sign up at https://web3forms.com (free), get your access key,
-  // and replace YOUR_WEB3FORMS_ACCESS_KEY_HERE in the form's hidden input above.
+  // and replace 7b57d9b3-06e1-4250-9247-26af548ea1b0 in the form's hidden input above.
   async function handleSubmit(e){
     e.preventDefault();
     const f=e.target;
@@ -719,7 +719,7 @@
 
     // Check the user actually swapped in a real access key
     const key=data.get('access_key');
-    if(!key || key==='YOUR_WEB3FORMS_ACCESS_KEY_HERE'){
+    if(!key || key==='7b57d9b3-06e1-4250-9247-26af548ea1b0'){
       status.className='form-status show error';
       status.innerHTML='⚠ Form not yet activated. Please call us directly at <a href="tel:6479144176" style="color:#fff;text-decoration:underline">647-914-4176</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
       return false;
