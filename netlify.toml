@@ -1,0 +1,19 @@
+# Netlify configuration
+# This file tells Netlify how to serve the site.
+
+[build]
+  publish = "."
+
+# Pretty URL for the admin panel
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://drivewayautorepair.ca
+display_url: https://drivewayautorepair.ca
+logo_url: https://drivewayautorepair.ca/images/logo.jpeg
+
+collections:
+  - name: "gallery"
+    label: "Before & After Gallery"
+    files:
+      - name: "entries"
+        label: "Manage Gallery Entries"
+        file: "gallery.json"
+        description: "Add, edit, or delete before/after photo pairs. Changes go live in about 60 seconds after you publish."
+        fields:
+          - label: "Gallery Entries"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.car}}"
+            fields:
+              - {label: "Car (make, model, year)", name: "car", widget: "string", hint: "Shown as the card title, e.g. 'Honda Civic 2019'"}
+              - {label: "Before photo", name: "before", widget: "image", hint: "Damaged car photo"}
+              - {label: "After photo", name: "after", widget: "image", hint: "Repaired/finished car photo"}
+              - {label: "Description", name: "description", widget: "text", hint: "One or two sentences describing the repair"}
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                default: ["Collision", "Insurance claim"]
+                hint: "Short labels shown under the description, e.g. Collision, Paint, Insurance claim"

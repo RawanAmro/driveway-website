@@ -1,0 +1,46 @@
+{
+  "entries": [
+    {
+      "car": "Volkswagen Jetta 2023",
+      "before": "images/Jetta 2023 before.jpeg",
+      "after": "images/Jetta 2023 after.jpeg",
+      "description": "Total-loss auction recovery. Full panel replacement, structural repair, and factory-match paint restored to showroom condition.",
+      "tags": ["Collision", "Insurance claim"]
+    },
+    {
+      "car": "BMW E30 Restoration",
+      "before": "images/Bmw E30 before.jpeg",
+      "after": "images/Bmw E30 after.jpeg",
+      "description": "Ground-up restoration. Rust repair, bodywork, concours-quality respray in classic red, and custom BBS wheel fitment.",
+      "tags": ["Restoration", "Custom build"]
+    },
+    {
+      "car": "BMW E36 Restoration",
+      "before": "images/BMW E36 before.jpeg",
+      "after": "images/BMW E36 after.jpeg",
+      "description": "Full shop-built restoration. Primer, bodywork, and premium silver respray with M-package front bumper and staggered wheels.",
+      "tags": ["Restoration", "Paint"]
+    },
+    {
+      "car": "Toyota RAV4",
+      "before": "images/Toyota rav4 before.jpeg",
+      "after": "images/Toyota rav4 after.jpeg",
+      "description": "Side-panel collision repair. Masking, primer, bondo, and factory-match black repaint — delivered finished and insurance-ready.",
+      "tags": ["Collision", "Insurance claim"]
+    },
+    {
+      "car": "Lexus IS",
+      "before": "images/Lexus IS before.jpeg",
+      "after": "images/Lexus IS after.jpeg",
+      "description": "Front-end collision repair. Towed in from the scene, restored bumper and fender, and returned to the road through insurance — deductible covered.",
+      "tags": ["Collision", "Insurance claim"]
+    },
+    {
+      "car": "Acura ILX 2020",
+      "before": "images/Accura ilx before.jpeg",
+      "after": "images/Accura ilx 2020 after.jpeg",
+      "description": "Rear-end collision repair with full quarter-panel restoration, bumper replacement, and color-matched refinish back to factory spec.",
+      "tags": ["Collision", "OEM parts"]
+    }
+  ]
+}
