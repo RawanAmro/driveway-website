@@ -719,7 +719,7 @@
 
     // Check the user actually swapped in a real access key
     const key=data.get('access_key');
-    if(!key || key==='7b57d9b3-06e1-4250-9247-26af548ea1b0'){
+    if(!key){
       status.className='form-status show error';
       status.innerHTML='⚠ Form not yet activated. Please call us directly at <a href="tel:6479144176" style="color:#fff;text-decoration:underline">647-914-4176</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
       return false;
