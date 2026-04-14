@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://drivewayautorepair.ca/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/logo.jpeg</image:loc>
+      <image:title>Driveway Auto Repair Inc Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/Bmw E30 after.jpeg</image:loc>
+      <image:title>BMW E30 Restoration</image:title>
+      <image:caption>Ground-up restoration by Driveway Auto Repair Inc</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/BMW E36 after.jpeg</image:loc>
+      <image:title>BMW E36 Restoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/Jetta 2023 after.jpeg</image:loc>
+      <image:title>Volkswagen Jetta 2023 Collision Repair</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/Lexus IS after.jpeg</image:loc>
+      <image:title>Lexus IS Collision Repair</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/Toyota rav4 after.jpeg</image:loc>
+      <image:title>Toyota RAV4 Side Panel Repair</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://drivewayautorepair.ca/images/Accura ilx 2020 after.jpeg</image:loc>
+      <image:title>Acura ILX 2020 Rear Collision Repair</image:title>
+    </image:image>
+  </url>
+</urlset>
