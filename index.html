@@ -41,6 +41,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+<!-- Google tag (gtag.js) - Driveway Auto Repair Inc -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18155935305"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18155935305');
+</script>
+
 <!-- Structured Data: LocalBusiness / AutoBodyShop for Google rich results -->
 <script type="application/ld+json">
 {
@@ -427,6 +436,26 @@
     box-shadow:0 12px 36px -8px var(--red-glow);transition:transform .25s;
   }
   .call-float:hover{transform:scale(1.1)}
+
+  /* ==== MOBILE STICKY CALL BAR (high-conversion CTA for mobile) ==== */
+  .mobile-sticky-call{
+    display:none;
+    position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:linear-gradient(90deg,var(--red),var(--red-2));
+    color:#fff;text-align:center;padding:16px 18px;
+    font-weight:800;font-size:1rem;letter-spacing:.04em;
+    text-decoration:none;
+    box-shadow:0 -8px 24px rgba(0,0,0,.5);
+    display:flex;align-items:center;justify-content:center;gap:10px;
+  }
+  .mobile-sticky-call .ico{font-size:1.3rem}
+  .mobile-sticky-call small{display:block;font-size:.75rem;font-weight:600;opacity:.9;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+  @media(min-width:769px){.mobile-sticky-call{display:none !important}}
+  @media(max-width:768px){
+    .mobile-sticky-call{display:flex !important}
+    .call-float{bottom:84px}
+    body{padding-bottom:72px}
+  }
   .call-float::before{
     content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--red);opacity:.4;animation:ring 2s infinite;
   }
@@ -747,6 +776,15 @@
 
 <a href="tel:6479144176" class="call-float" aria-label="Call now">📞</a>
 
+<!-- Mobile sticky call bar (only shows on mobile, high conversion CTA) -->
+<a href="tel:6479144176" class="mobile-sticky-call" aria-label="Call Driveway Auto Repair">
+  <span class="ico">📞</span>
+  <span>
+    Call Now — Free Estimate
+    <small>647-914-4176 · Open Mon-Sat</small>
+  </span>
+</a>
+
 <script>
   // === GALLERY LOADER (reads gallery.json, populated by Decap CMS admin) ===
   function escHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
@@ -841,6 +879,21 @@
         f.reset();
         document.querySelector('.file-drop strong').textContent='📸 Click to upload photos';
         btn.textContent='Sent ✓';
+
+        // Google Ads conversion tracking — Free Estimate Form Submit
+        if(typeof gtag==='function'){
+          gtag('event','conversion',{
+            'send_to':'AW-18155935305/rN56CMysvqscEMmsttFD',
+            'value':200.0,
+            'currency':'CAD',
+            'transaction_id':''
+          });
+          // Also fire a generic event for audience building
+          gtag('event','generate_lead',{
+            'currency':'CAD',
+            'value':200.0
+          });
+        }
       } else {
         throw new Error(json.message||'Submission failed');
       }
@@ -855,6 +908,21 @@
   // Fade-in observer
   const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
   document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+  // Phone click conversion tracking — fires on ANY tel: link click
+  document.addEventListener('click',function(e){
+    const link=e.target.closest('a[href^="tel:"]');
+    if(link && typeof gtag==='function'){
+      gtag('event','phone_call_click',{
+        'event_category':'engagement',
+        'event_label':link.getAttribute('href'),
+        'value':300.0,
+        'currency':'CAD'
+      });
+      // If a "Calls from website visits" conversion is set up later, replace with:
+      // gtag('event','conversion',{'send_to':'AW-18155935305/PHONE_CLICK_LABEL','value':300.0,'currency':'CAD'});
+    }
+  });
 
   // Redirect after login to /admin/ (Decap CMS auto-opens)
   if(window.netlifyIdentity){
