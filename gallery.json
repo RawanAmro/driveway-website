@@ -1,6 +1,13 @@
 {
   "entries": [
     {
+      "car": "Mitsubishi 3000GT — Full Restoration",
+      "before": "images/3000gt-before.jpeg",
+      "after": "images/3000gt-after.jpeg",
+      "description": "Complete body-off restoration. Full strip to bare metal, flawless prep in our professional spray booth, candy-red refinish, and polished to a showroom shine. A labor-of-love build from our team.",
+      "tags": ["Restoration", "Custom paint", "Full build"]
+    },
+    {
       "car": "Volkswagen Jetta 2023",
       "before": "images/Jetta 2023 before.jpeg",
       "after": "images/Jetta 2023 after.jpeg",

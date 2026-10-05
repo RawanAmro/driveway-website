@@ -1,0 +1,16 @@
+.DS_Store
+.idea/
+*.swp
+*.swo
+.vscode/
+node_modules/
+
+# Internal marketing files — keep on this computer only.
+# Netlify publishes this whole folder, so anything committed here becomes public on the website.
+google-ads/
+meta-ads/
+
+# Reference-only / raw photos (not used on the site; some show licence plates)
+images/promo-reference.jpeg
+images/3000gt-paint-*.jpeg
+images/3000gt-finished-*.jpeg

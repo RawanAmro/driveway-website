@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Driveway Auto Repair Inc | Auto Body Shop Mississauga — Collision Repair, Insurance Claims A–Z</title>
-<meta name="description" content="Driveway Auto Repair Inc in Mississauga, ON — top-rated auto body shop, collision repair, paint, on-the-spot towing, replacement car through your insurance, and full A–Z insurance claim handling. Your deductible is on us. Free online estimates. Call 647-914-4176." />
+<meta name="description" content="Driveway Auto Repair Inc in Mississauga, ON — top-rated auto body shop, collision repair, paint, on-the-spot towing, replacement car through your insurance, and full A–Z insurance claim handling. Your deductible is on us. Free online estimates. Call 226-342-5558." />
 <meta name="keywords" content="auto body shop Mississauga, collision repair Mississauga, auto body Mississauga, car body shop Mississauga, auto body repair Mississauga, accident repair Mississauga, auto body Wolfedale, insurance claim repair Mississauga, BMW repair Mississauga, rust repair Mississauga, paint shop Mississauga, auto body GTA, deductible covered, free estimate auto body" />
 <meta name="author" content="Driveway Auto Repair Inc" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -21,7 +21,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://drivewayautorepair.ca/" />
 <meta property="og:title" content="Driveway Auto Repair Inc | Auto Body Shop Mississauga" />
-<meta property="og:description" content="Top-rated auto body shop in Mississauga. Collision repair, paint, on-the-spot towing, insurance claims A–Z. Your deductible is on us. Call 647-914-4176." />
+<meta property="og:description" content="Top-rated auto body shop in Mississauga. Collision repair, paint, on-the-spot towing, insurance claims A–Z. Your deductible is on us. Call 226-342-5558." />
 <meta property="og:image" content="https://drivewayautorepair.ca/images/logo.jpeg" />
 <meta property="og:locale" content="en_CA" />
 <meta property="og:site_name" content="Driveway Auto Repair Inc" />
@@ -60,7 +60,14 @@
   "image": "https://drivewayautorepair.ca/images/logo.jpeg",
   "logo": "https://drivewayautorepair.ca/images/logo.jpeg",
   "url": "https://drivewayautorepair.ca/",
-  "telephone": "+1-647-914-4176",
+  "telephone": "+1-226-342-5558",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+1-226-342-5558",
+    "contactType": "customer service",
+    "areaServed": "CA",
+    "availableLanguage": ["English", "Arabic"]
+  }],
   "email": "drivewayautoinc@gmail.com",
   "priceRange": "$$",
   "description": "Full-service auto body repair shop in Mississauga, Ontario. Specializing in collision repair, paint, rust repair, insurance claims A–Z, on-the-spot towing, and replacement vehicles through your insurance. Your deductible is on us.",
@@ -203,7 +210,7 @@
     content:"";position:absolute;inset:0;z-index:-2;
     background:
       linear-gradient(115deg,rgba(8,8,10,.97) 0%,rgba(8,8,10,.85) 40%,rgba(8,8,10,.55) 70%,rgba(8,8,10,.3) 100%),
-      url("https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?auto=format&fit=crop&w=2400&q=80") center/cover;
+      url("images/shop-hero.jpeg") center/cover;
   }
   .hero::after{
     content:"";position:absolute;inset:0;z-index:-1;
@@ -239,6 +246,86 @@
   .trust-item .num{font-family:'Bebas Neue',sans-serif;color:var(--red);font-size:2.6rem;line-height:1}
   .trust-item .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-top:8px;font-weight:600}
   @media(max-width:700px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:28px}}
+
+  /* ==== INSURANCE PROMO BANNER (Accident / 15% OFF / $0 Deductible) ==== */
+  .insurance-promo{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse at top right,rgba(225,6,0,.35) 0%,transparent 55%),
+      radial-gradient(ellipse at bottom left,rgba(225,6,0,.18) 0%,transparent 50%),
+      linear-gradient(180deg,#0a0a0d 0%,#120305 50%,#1a0306 100%);
+    border-top:1px solid rgba(225,6,0,.3);
+    border-bottom:1px solid rgba(225,6,0,.3);
+    padding:84px 0;
+  }
+  .insurance-promo::before{
+    content:"";position:absolute;top:-2px;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,transparent 0%,var(--red) 25%,var(--red-2) 50%,var(--red) 75%,transparent 100%);
+    animation:slide 3s ease-in-out infinite;
+  }
+  @keyframes slide{0%,100%{opacity:.6}50%{opacity:1}}
+  .promo-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;position:relative;z-index:2}
+  @media(max-width:900px){.promo-grid{grid-template-columns:1fr;gap:40px}}
+  .promo-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--red);color:#fff;padding:10px 20px;border-radius:50px;
+    font-size:.75rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    margin-bottom:24px;box-shadow:0 10px 30px -8px var(--red-glow);
+  }
+  .promo-badge .live{width:8px;height:8px;background:#fff;border-radius:50%;animation:pulse 1.4s infinite}
+  .promo-left h2{
+    font-size:clamp(2.4rem,5.6vw,4.4rem);line-height:.98;margin-bottom:22px;
+    text-transform:uppercase;letter-spacing:.01em;font-weight:400;
+  }
+  .promo-left h2 .accent{color:var(--red);display:block}
+  .promo-left h2 .thin{display:block;font-family:'Inter',sans-serif;font-size:.42em;font-weight:300;color:var(--muted);text-transform:none;letter-spacing:.02em;margin-top:14px;line-height:1.4}
+  .promo-benefits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:28px 0 32px}
+  @media(max-width:600px){.promo-benefits{grid-template-columns:1fr}}
+  .promo-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:.98rem;color:#eaeaef}
+  .promo-benefits .check{
+    flex-shrink:0;width:22px;height:22px;background:var(--red);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:.78rem;margin-top:1px;
+    box-shadow:0 4px 12px -2px var(--red-glow);
+  }
+  .promo-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:8px}
+  .promo-cta-row .btn{padding:20px 32px;font-size:1rem}
+  .promo-foot{margin-top:22px;font-size:.82rem;color:var(--muted-2);letter-spacing:.02em}
+  .promo-foot strong{color:var(--red)}
+
+  /* Right card — the 15% OFF offer */
+  .promo-card{
+    position:relative;
+    background:linear-gradient(145deg,#1a0306 0%,#2a0608 100%);
+    border:1px solid rgba(225,6,0,.35);
+    border-radius:12px;padding:48px 36px;text-align:center;
+    box-shadow:0 30px 80px -20px rgba(225,6,0,.3), inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .promo-card::before{
+    content:"";position:absolute;inset:0;border-radius:12px;padding:1px;
+    background:linear-gradient(135deg,rgba(225,6,0,.6),transparent 50%,rgba(225,6,0,.3));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  }
+  .promo-card .corner{
+    position:absolute;top:-12px;right:-12px;background:var(--red);color:#fff;
+    font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;
+    padding:8px 18px;transform:rotate(6deg);border-radius:3px;
+    box-shadow:0 8px 20px -4px var(--red-glow);
+  }
+  .promo-card .label{font-size:.72rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .promo-card .huge{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,13vw,8rem);line-height:.92;color:#fff;letter-spacing:-.01em}
+  .promo-card .huge .pct{color:var(--red);display:inline-block;transform:translateY(-6px);font-size:.72em;margin-left:4px}
+  .promo-card .subline{font-size:1.1rem;color:#fff;font-weight:600;margin:6px 0 20px;letter-spacing:.02em}
+  .promo-card .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(225,6,0,.4),transparent);margin:22px -36px}
+  .promo-card .zero{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(225,6,0,.12);border:1px solid rgba(225,6,0,.35);
+    color:#fff;padding:12px 20px;border-radius:50px;
+    font-weight:700;font-size:.95rem;
+  }
+  .promo-card .zero .amount{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:.02em;line-height:1}
+  .promo-card .zero-note{margin-top:12px;font-size:.78rem;color:var(--muted);letter-spacing:.02em}
 
   /* ==== SECTION ==== */
   section{padding:100px 0}
@@ -473,7 +560,7 @@
   <div class="topbar-inner">
     <div><span class="pulse"></span> Open Today • <strong style="color:#fff">3095 Wolfedale Rd, Unit A3, Mississauga, ON L5C 1V8</strong></div>
     <div>
-      <a href="tel:6479144176">📞 647-914-4176</a>
+      <a href="tel:2263425558">📞 226-342-5558</a>
     </div>
   </div>
 </div>
@@ -491,6 +578,7 @@
     </a>
     <button class="burger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
     <div class="nav-links" id="navLinks">
+      <a href="#offer" style="color:var(--red);font-weight:800">15% OFF ·</a>
       <a href="#services">Services</a>
       <a href="#insurance">Insurance</a>
       <a href="#gallery">Our Work</a>
@@ -504,12 +592,12 @@
 <!-- HERO -->
 <header class="hero">
   <div class="container hero-content">
-    <span class="eyebrow"><span class="dot"></span>Mississauga • Ontario</span>
+    <span class="eyebrow"><span class="dot"></span>Mississauga • Open now · 15% off this week</span>
     <h1>Crashed it?<span class="accent">We'll handle it. A to Z.</span></h1>
-    <p class="lead">Collision repair, paint, on-the-spot towing, replacement vehicle through your insurance, and full insurance claim management — all under one roof. We don't just fix cars, we take care of <strong>everything</strong> so you don't have to.</p>
+    <p class="lead">On-the-spot towing, rental car arranged through your insurance, and your <strong>entire claim handled start-to-finish</strong>. Zero paperwork for you. $0 deductible — even if you're at fault. One call: 226-342-5558.</p>
     <div class="btn-row">
-      <a href="#estimate" class="btn btn-primary">Get Free Online Estimate →</a>
-      <a href="tel:6479144176" class="btn btn-outline">📞 Call Now</a>
+      <a href="tel:2263425558" class="btn btn-primary">📞 Call Now · (226) 342-5558</a>
+      <a href="#estimate" class="btn btn-outline">Get Free Online Estimate →</a>
     </div>
     <div class="hero-meta">
       <div class="stars">★★★★★</div>
@@ -555,6 +643,44 @@
     <p style="text-align:center;margin-top:18px;color:var(--muted);font-size:.88rem">Don't see your insurer? We work with virtually every Canadian insurance company — just ask.</p>
   </div>
 </div>
+
+<!-- INSURANCE CLAIM PROMO BANNER -->
+<section class="insurance-promo" id="offer" aria-label="Limited time insurance claim offer">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-left">
+        <span class="promo-badge"><span class="live"></span>Limited time · This week only</span>
+        <h2>
+          Been in an accident?
+          <span class="accent">One call starts your claim.</span>
+          <span class="thin">We handle every form, every call, every approval — from the tow truck to the final clear coat.</span>
+        </h2>
+        <ul class="promo-benefits">
+          <li><span class="check">✓</span><span><strong>Free on-the-spot towing</strong> — we come to you</span></li>
+          <li><span class="check">✓</span><span><strong>Rental car arranged</strong> through your insurance</span></li>
+          <li><span class="check">✓</span><span><strong>Full A–Z claim handling</strong> — zero paperwork for you</span></li>
+          <li><span class="check">✓</span><span><strong>$0 deductible</strong> — even if you're at fault</span></li>
+          <li><span class="check">✓</span><span><strong>Lifetime warranty</strong> on all body &amp; paint work</span></li>
+          <li><span class="check">✓</span><span><strong>15% OFF</strong> all repairs this week</span></li>
+        </ul>
+        <div class="promo-cta-row">
+          <a href="tel:2263425558" class="btn btn-primary" aria-label="Call 226-342-5558 now">📞 Call Now · (226) 342-5558</a>
+          <a href="#estimate" class="btn btn-outline">Get Free Online Estimate</a>
+        </div>
+        <p class="promo-foot"><strong>No obligation.</strong> Takes 60 seconds. We respond within 24 hours.</p>
+      </div>
+      <aside class="promo-card" aria-label="This week's discount offer">
+        <span class="corner">THIS WEEK ONLY</span>
+        <div class="label">Limited Offer</div>
+        <div class="huge">15<span class="pct">%</span><br><span style="font-size:.42em;color:#fff;letter-spacing:.02em">OFF</span></div>
+        <div class="subline">All auto body &amp; collision repairs</div>
+        <div class="divider"></div>
+        <div class="zero">Pay <span class="amount">$0</span> deductible</div>
+        <div class="zero-note">Yes — even if the accident was your fault.</div>
+      </aside>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services" class="services">
@@ -728,7 +854,7 @@
     <div class="contact-grid">
       <div class="contact-card">
         <div class="icon">📞</div><h3>Call Us</h3>
-        <a href="tel:6479144176"><strong style="color:#fff">Malek Amro</strong><br>647-914-4176</a>
+        <a href="tel:2263425558"><strong style="color:#fff">Driveway Auto Repair</strong><br>226-342-5558</a>
       </div>
       <div class="contact-card">
         <div class="icon">📍</div><h3>Visit the Shop</h3>
@@ -772,14 +898,14 @@
   </div>
 </footer>
 
-<a href="tel:6479144176" class="call-float" aria-label="Call now">📞</a>
+<a href="tel:2263425558" class="call-float" aria-label="Call now">📞</a>
 
 <!-- Mobile sticky call bar (only shows on mobile, high conversion CTA) -->
-<a href="tel:6479144176" class="mobile-sticky-call" aria-label="Call Driveway Auto Repair">
+<a href="tel:2263425558" class="mobile-sticky-call" aria-label="Call Driveway Auto Repair">
   <span class="ico">📞</span>
   <span>
     Call Now — Free Estimate
-    <small>647-914-4176 · Open Mon-Sat</small>
+    <small>226-342-5558 · Open Mon-Sat</small>
   </span>
 </a>
 
@@ -832,10 +958,22 @@
     });
     if(empty) empty.style.display=(entries&&entries.length)?'block':'none';
   }
+  // Backup copy of gallery.json. The live site always reads gallery.json (edited in /admin).
+  // This copy is only used when gallery.json can't be loaded — e.g. when index.html is
+  // opened straight from your computer (file://), where browsers block fetch().
+  const GALLERY_FALLBACK=[
+    {car:"Mitsubishi 3000GT — Full Restoration",before:"images/3000gt-before.jpeg",after:"images/3000gt-after.jpeg",description:"Complete body-off restoration. Full strip to bare metal, flawless prep in our professional spray booth, candy-red refinish, and polished to a showroom shine. A labor-of-love build from our team.",tags:["Restoration","Custom paint","Full build"]},
+    {car:"Volkswagen Jetta 2023",before:"images/Jetta 2023 before.jpeg",after:"images/Jetta 2023 after.jpeg",description:"Total-loss auction recovery. Full panel replacement, structural repair, and factory-match paint restored to showroom condition.",tags:["Collision","Insurance claim"]},
+    {car:"BMW E30 Restoration",before:"images/Bmw E30 before.jpeg",after:"images/Bmw E30 after.jpeg",description:"Ground-up restoration. Rust repair, bodywork, concours-quality respray in classic red, and custom BBS wheel fitment.",tags:["Restoration","Custom build"]},
+    {car:"BMW E36 Restoration",before:"images/BMW E36 before.jpeg",after:"images/BMW E36 after.jpeg",description:"Full shop-built restoration. Primer, bodywork, and premium silver respray with M-package front bumper and staggered wheels.",tags:["Restoration","Paint"]},
+    {car:"Toyota RAV4",before:"images/Toyota rav4 before.jpeg",after:"images/Toyota rav4 after.jpeg",description:"Side-panel collision repair. Masking, primer, bondo, and factory-match black repaint — delivered finished and insurance-ready.",tags:["Collision","Insurance claim"]},
+    {car:"Lexus IS",before:"images/Lexus IS before.jpeg",after:"images/Lexus IS after.jpeg",description:"Front-end collision repair. Towed in from the scene, restored bumper and fender, and returned to the road through insurance — deductible covered.",tags:["Collision","Insurance claim"]},
+    {car:"Acura ILX 2020",before:"images/Accura ilx before.jpeg",after:"images/Accura ilx 2020 after.jpeg",description:"Rear-end collision repair with full quarter-panel restoration, bumper replacement, and color-matched refinish back to factory spec.",tags:["Collision","OEM parts"]}
+  ];
   fetch('gallery.json',{cache:'no-store'})
-    .then(r=>r.ok?r.json():{entries:[]})
+    .then(r=>{if(!r.ok)throw new Error('gallery.json '+r.status);return r.json()})
     .then(d=>renderGallery(d.entries||[]))
-    .catch(()=>renderGallery([]));
+    .catch(()=>renderGallery(GALLERY_FALLBACK));
 
   // Form submit — Web3Forms backend (free, supports file attachments)
   // To activate: sign up at https://web3forms.com (free), get your access key,
@@ -860,7 +998,7 @@
     const key=data.get('access_key');
     if(!key){
       status.className='form-status show error';
-      status.innerHTML='⚠ Form not yet activated. Please call us directly at <a href="tel:6479144176" style="color:#fff;text-decoration:underline">647-914-4176</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
+      status.innerHTML='⚠ Form not yet activated. Please call us directly at <a href="tel:2263425558" style="color:#fff;text-decoration:underline">226-342-5558</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
       return false;
     }
 
@@ -897,7 +1035,7 @@
       }
     } catch(err){
       status.className='form-status show error';
-      status.innerHTML='⚠ Sorry, there was a problem sending your request. Please call us at <a href="tel:6479144176" style="color:#fff;text-decoration:underline">647-914-4176</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
+      status.innerHTML='⚠ Sorry, there was a problem sending your request. Please call us at <a href="tel:2263425558" style="color:#fff;text-decoration:underline">226-342-5558</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
       btn.disabled=false; btn.textContent='Send My Estimate Request →';
     }
     return false;
