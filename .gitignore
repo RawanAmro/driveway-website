@@ -14,3 +14,6 @@ meta-ads/
 images/promo-reference.jpeg
 images/3000gt-paint-*.jpeg
 images/3000gt-finished-*.jpeg
+
+# Customer lead lists (personal data) - never publish
+leads/
