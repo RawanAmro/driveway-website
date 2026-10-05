@@ -825,9 +825,9 @@
         <label>Upload Photos (4 corners recommended) <span class="req">*</span></label>
         <label for="photos" class="file-drop">
           <strong>📸 Click to upload photos</strong>
-          <small>Front • Rear • Driver side • Passenger side (JPG/PNG)</small>
+          <small>Front • Rear • Driver side • Passenger side · phone photos are fine, we shrink them automatically</small>
         </label>
-        <input id="photos" type="file" name="photos" accept="image/*" multiple required style="display:none" onchange="document.querySelector('.file-drop strong').textContent='✓ '+this.files.length+' photo(s) selected'" />
+        <input id="photos" type="file" name="photos" accept="image/*" multiple style="display:none" onchange="document.querySelector('.file-drop strong').textContent='✓ '+this.files.length+' photo(s) selected'" />
       </div>
       <div class="submit-row">
         <button type="submit" class="btn btn-primary" id="submitBtn">Send My Estimate Request →</button>
@@ -975,63 +975,129 @@
     .then(d=>renderGallery(d.entries||[]))
     .catch(()=>renderGallery(GALLERY_FALLBACK));
 
-  // Form submit — Web3Forms backend (free, supports file attachments)
-  // To activate: sign up at https://web3forms.com (free), get your access key,
-  // and replace YOUR_WEB3FORMS_ACCESS_KEY_HERE in the form's hidden input above.
+  // Form submit — Web3Forms backend (account key in the hidden access_key field above).
+  //
+  // Why the photo handling below exists: phone photos are 3–8 MB each and Web3Forms rejects
+  // large uploads (~5 MB), which showed customers an error (reported Sep 27, 2026). So we:
+  //   1. shrink every photo in the browser (max 1600px, JPEG) → usually 200–400 KB each,
+  //   2. keep the whole upload under 4.5 MB,
+  //   3. if the upload still fails, resend the details WITHOUT photos so the lead is never lost,
+  //      and ask the customer to text the photos instead.
+  function loadImage(file){
+    return new Promise((resolve,reject)=>{
+      const url=URL.createObjectURL(file);
+      const img=new Image();
+      img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};
+      img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('cannot read image'))};
+      img.src=url;
+    });
+  }
+  async function shrinkPhoto(file,maxSide=1600,quality=0.78){
+    try{
+      const img=await loadImage(file);
+      const w=img.naturalWidth,h=img.naturalHeight;
+      const scale=Math.min(1,maxSide/Math.max(w,h));
+      const c=document.createElement('canvas');
+      c.width=Math.max(1,Math.round(w*scale)); c.height=Math.max(1,Math.round(h*scale));
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',quality));
+      if(!blob||blob.size>=file.size) return file;
+      return new File([blob],(file.name||'photo').replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
+    }catch(err){ return file; } // e.g. a HEIC file in a browser that can't read it — send it as-is
+  }
+  async function preparePhotos(files){
+    const MAX_TOTAL=4.5*1024*1024, photos=[]; let total=0, skipped=0;
+    for(const file of Array.from(files||[]).slice(0,8)){
+      const p=await shrinkPhoto(file);
+      if(total+p.size>MAX_TOTAL){skipped++;continue}
+      photos.push(p); total+=p.size;
+    }
+    return {photos,skipped};
+  }
+  function buildData(form,photos,note){
+    const d=new FormData(form);
+    d.delete('photos');
+    photos.forEach(p=>d.append('photos',p,p.name));
+    if(note) d.set('photo_note',note);
+    // Pretty subject line with vehicle details
+    d.set('subject',`Estimate Request — ${d.get('year')||''} ${d.get('make')||''} ${d.get('model')||''} (${d.get('name')||'no name'})`);
+    // Set reply-to so Gmail "Reply" goes directly to the customer
+    if(d.get('email')) d.set('replyto', d.get('email'));
+    return d;
+  }
+  async function sendToWeb3Forms(d){
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d});
+    let json={}; try{ json=await res.json(); }catch(err){}
+    if(!res.ok||!json.success) throw new Error(json.message||('HTTP '+res.status));
+    return json;
+  }
+
   async function handleSubmit(e){
     e.preventDefault();
     const f=e.target;
     const btn=document.getElementById('submitBtn');
     const status=document.getElementById('formStatus');
-    const data=new FormData(f);
+    const fileInput=document.getElementById('photos');
+    const raw=new FormData(f);
 
     // Honeypot — silently drop spam bots
-    if(data.get('botcheck')) return false;
-
-    // Pretty subject line with vehicle details
-    data.set('subject',`Estimate Request — ${data.get('year')||''} ${data.get('make')||''} ${data.get('model')||''} (${data.get('name')||'no name'})`);
-
-    // Set reply-to so Gmail "Reply" goes directly to the customer
-    if(data.get('email')) data.set('replyto', data.get('email'));
+    if(raw.get('botcheck')) return false;
 
     // Check access key is present
-    const key=data.get('access_key');
-    if(!key){
+    if(!raw.get('access_key')){
       status.className='form-status show error';
       status.innerHTML='⚠ Form not yet activated. Please call us directly at <a href="tel:2263425558" style="color:#fff;text-decoration:underline">226-342-5558</a> or email <a href="mailto:drivewayautoinc@gmail.com" style="color:#fff;text-decoration:underline">drivewayautoinc@gmail.com</a>.';
       return false;
     }
 
+    // Photos are required. The file input is hidden, so the browser can't show its own
+    // "required" bubble (it would silently refuse to submit) — check it here instead.
+    if(!fileInput.files||!fileInput.files.length){
+      status.className='form-status show error';
+      status.innerHTML='📸 Please add at least one photo of the damage — tap "Click to upload photos" above.';
+      document.querySelector('.file-drop').scrollIntoView({behavior:'smooth',block:'center'});
+      return false;
+    }
+
     btn.disabled=true; btn.textContent='Sending...';
     status.className='form-status show loading';
-    status.textContent='Uploading your photos and sending your request...';
+    status.textContent='Preparing your photos...';
 
+    let photoNote='';
     try{
-      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
-      const json=await res.json();
-      if(json.success){
-        status.className='form-status show success';
-        status.innerHTML='✓ Thank you! Your estimate request was sent successfully. We\'ll reply within 24 hours at the contact you provided.';
-        f.reset();
-        document.querySelector('.file-drop strong').textContent='📸 Click to upload photos';
-        btn.textContent='Sent ✓';
+      const {photos,skipped}=await preparePhotos(fileInput.files);
+      if(skipped) photoNote=skipped+' photo(s) were too large to attach — ask the customer to text them.';
+      status.textContent='Sending your request...';
+      try{
+        await sendToWeb3Forms(buildData(f,photos,photoNote));
+      }catch(uploadErr){
+        // Never lose the lead: send the details again without photos
+        photoNote='The customer\'s photos could not be uploaded — ask them to text the photos to (226) 342-5558.';
+        await sendToWeb3Forms(buildData(f,[],photoNote));
+      }
 
-        // Google Ads conversion tracking — Free Estimate Form Submit
-        if(typeof gtag==='function'){
-          gtag('event','conversion',{
-            'send_to':'AW-18155935305/rN56CMysvqscEMmsttFD',
-            'value':200.0,
-            'currency':'CAD',
-            'transaction_id':''
-          });
-          // Also fire a generic event for audience building
-          gtag('event','generate_lead',{
-            'currency':'CAD',
-            'value':200.0
-          });
-        }
-      } else {
-        throw new Error(json.message||'Submission failed');
+      status.className='form-status show success';
+      status.innerHTML=photoNote
+        ? '✓ Thank you! We received your request. Some photos couldn\'t upload — please text them to <a href="sms:2263425558" style="color:#fff;text-decoration:underline">226-342-5558</a>.'
+        : '✓ Thank you! Your estimate request was sent successfully. We\'ll reply within 24 hours at the contact you provided.';
+      const isTest=/\btest\b/i.test(raw.get('name')||''); // don't count our own test submissions in Google Ads
+      f.reset();
+      document.querySelector('.file-drop strong').textContent='📸 Click to upload photos';
+      btn.textContent='Sent ✓';
+
+      // Google Ads conversion tracking — Free Estimate Form Submit
+      if(!isTest && typeof gtag==='function'){
+        gtag('event','conversion',{
+          'send_to':'AW-18155935305/rN56CMysvqscEMmsttFD',
+          'value':200.0,
+          'currency':'CAD',
+          'transaction_id':''
+        });
+        // Also fire a generic event for audience building
+        gtag('event','generate_lead',{
+          'currency':'CAD',
+          'value':200.0
+        });
       }
     } catch(err){
       status.className='form-status show error';
